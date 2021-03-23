@@ -6,7 +6,7 @@ public class Leet41 {
             [3,4,-1,1] => -1, 1, 3, 4 => 2
             [7,8,9,11,12] => 1
          */
-        int[] t = {3,4,-1,1};
+        int[] t = {1,2,0};
         Leet41 a = new Leet41();
         a.firstMissingPositive(t);
 
