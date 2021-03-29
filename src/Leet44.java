@@ -10,7 +10,7 @@ public class Leet44 {
         boolean[][] match = new boolean[s.length() + 1][p.length() + 1];
         match[s.length()][p.length()] = true;
         for (int i = p.length() - 1; i >= 0; i--) {
-            if(p.charAt(i) != "*")
+            if(p.charAt(i) != '*')
                 break;
             else
                 match[s.length()][i] = true;
