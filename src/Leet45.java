@@ -7,8 +7,8 @@ public class Leet45 {
     }
 
     public int jump(int[] nums) {
+        // 길이가 1인 경우에는 예외처리 함
         if(nums.length == 1) return 0;
-        //
         int jumps = 0, far = 0, end = 0;  //far : 현재 위치에서 점프했을때 가장 마지막 위치, end : 현재 뛰어야 할 시점.
         for(int i = 0; i < nums.length; i++) {
             far = Math.max(far, i + nums[i]);   // 현재 위치에서 점프했을때 가장 마지막 위치를 찾음
