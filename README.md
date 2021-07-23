@@ -212,11 +212,11 @@ public class BranchByYearResult {
 ```
 
 ```java
-    public interface MaxPriceByBranchResult {
-    	String getBrName();
-    	String getBrCode();
-    	int getSumAmt();
-    }
+public interface MaxPriceByBranchResult {
+    String getBrName();
+    String getBrCode();
+    int getSumAmt();
+}
 ```
 
 ### 5. 분당점과 판교점을 통폐합하여 판교점으로 관리점을 이관 및 지점명을 입력하면 해당지점의 거래금액의 합계를 출력하는 API 개발
@@ -250,22 +250,22 @@ POST /account/sumTransactionByBranch HTTP/1.1
 ```
 - `판교점`과 `분당점` 을 통폐합 하여서, `분당점` 입력시 `404`로 리턴해야한다.
 - `분당점` 입력시 `throw new NotFoundException()`를 사용하여 강제로 에러상태로 리턴시킨다.
-- `@ExceptionHandler`, `ResponseEntity`를 사용하여, `NotFoundException()` 도달 시, 사용자가 지정한 코드 및 메시지를 띄우도록 한다.
+- `@ExceptionHandler`, `ResponseEntity`를 사용하여, `NotFoundException()` 도달 시, 지정한 코드 및 메시지를 띄우도록 한다.
 
 ```java
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<NotfoundResult> notFoundException(NotFoundException e) {
-		NotfoundResult er = new NotfoundResult();
-		er.setCode("404");
-		er.setMsg("br code not found error");
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(er);	
-    }
+@ExceptionHandler(NotFoundException.class)
+public ResponseEntity<NotfoundResult> notFoundException(NotFoundException e) {
+	NotfoundResult er = new NotfoundResult();
+	er.setCode("404");
+	er.setMsg("br code not found error");
+	return ResponseEntity.status(HttpStatus.NOT_FOUND).body(er);	
+}
 ```
 ## 빌드 및 실행 방법
 ### Windows 환경
 ```
-$ 구글드라이브(__) 에서 '사전과제.zip' 을 내려받음. 그 후 압축해제.
+$ 구글드라이브 에서 '사전과제.zip' 을 내려받음. 그 후 압축해제.
 $ cmd에서 'cd {압축해제 경로}/사전과제/과제1' 명령어를 입력하여 해당 경로로 이동.
 $ 'gradlew clean build' 명령어 수행.
-$ 'java -jar build/libs/kps-kkt-test-0.0.1-SNAPSHOT.jar' 명령어 수행.
+$ 'java -jar -Dfile.encoding=UTF-8 build/libs/kps-kkt-test-0.0.1-SNAPSHOT.jar' 명령어 수행.
 $ http://localhost:8080/swagger-ui.html 접속.
